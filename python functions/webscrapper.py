@@ -7,6 +7,12 @@ import numpy as np
 
 
 def extract_desc_for_app(address):
+    """Changes data type of 'Verdict' column to boolean.
+    Args:
+        address (str): Text in form of url, can be invalid
+    Returns:
+        str: Extracted text from provided address
+    """
     try:
         x = BeautifulSoup(requests.get(address).text, 'html.parser')
     except:
