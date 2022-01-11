@@ -76,7 +76,7 @@ def text_cleaner(text, num):
     Returns:
         str: Cleaned text
     """
-    stop_words = set(pd.read_csv(r'python_functions/polish_stopwords.txt')['a'])
+    stop_words = set(pd.read_csv(r'polish_stopwords.txt')['a'])
 
     newString = text.lower()
     newString = BeautifulSoup(newString, "lxml").text
@@ -105,7 +105,7 @@ def prepare_text(text):
     Returns:
         numpy.ndarray: Tokenized input text
     """
-    with open('python_functions/tokenizer.pickle', 'rb') as handle:
+    with open('tokenizer.pickle', 'rb') as handle:
         x_tokenizer = pickle.load(handle)
     text = text_cleaner(text, 0)
     if len(text.split()) > max_text_len:
