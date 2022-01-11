@@ -76,7 +76,7 @@ def text_cleaner(text, num):
     Returns:
         str: Cleaned text
     """
-    stop_words = set(pd.read_csv(r'polish_stopwords.txt')['a'])
+    stop_words = set(pd.read_csv(r'python_functions/polish_stopwords.txt')['a'])
 
     newString = text.lower()
     newString = BeautifulSoup(newString, "lxml").text
