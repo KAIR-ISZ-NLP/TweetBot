@@ -105,7 +105,7 @@ def prepare_text(text):
     Returns:
         numpy.ndarray: Tokenized input text
     """
-    with open('tokenizer.pickle', 'rb') as handle:
+    with open('python_functions/tokenizer.pickle', 'rb') as handle:
         x_tokenizer = pickle.load(handle)
     text = text_cleaner(text, 0)
     if len(text.split()) > max_text_len:
