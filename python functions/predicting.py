@@ -14,6 +14,12 @@ max_text_len = 300
 
 
 def decode_sequence(input_seq):
+    """Predict summary for input
+    Args:
+        input_seq (numpy.ndarray): tokenized text for summarization
+    Returns:
+        str: Predicted summary for input
+    """
     encoder_model = keras.models.load_model('my_encoder')
     reverse_target_word_index = np.load('reverse_target_word_index.npy', allow_pickle='TRUE').item()
     target_word_index = np.load('target_word_index.npy', allow_pickle='TRUE').item()
@@ -63,6 +69,13 @@ def decode_sequence(input_seq):
 
 
 def text_cleaner(text, num):
+    """Cleans text for tokenization
+    Args:
+        text (str): Text for cleaning
+        num (int): Decides whether stop_words will be removed if 0 - they will be deleted
+    Returns:
+        str: Cleaned text
+    """
     stop_words = set(pd.read_csv(r'polish_stopwords.txt')['a'])
 
     newString = text.lower()
@@ -86,6 +99,12 @@ def text_cleaner(text, num):
 
 
 def prepare_text(text):
+    """Perform tokenization of text for predicting step
+    Args:
+        text (str): Cleaned text
+    Returns:
+        numpy.ndarray: Tokenized input text
+    """
     with open('tokenizer.pickle', 'rb') as handle:
         x_tokenizer = pickle.load(handle)
     text = text_cleaner(text, 0)
